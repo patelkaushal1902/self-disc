@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Success Workshop — The Way Your Business Is Built Around You Is.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#111111',
+          ink2: '#1A1A1A',
+          ink3: '#232323',
+          paper: '#FFFFFF',
+          paper2: '#F5F4F1',
+          line: '#E7E5DF',
+          green: '#2FBE5C',
+          greendeep: '#24A34C',
+          indigo: '#4A4CE0',
+          indigo2: '#6355E8',
+          amber: '#B4650A',
+          muted: '#6B6C66',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+      },
+    },
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: #FFFFFF; }
+  .fade-up { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+  .fade-up.in { opacity: 1; transform: translateY(0); }
+  .marquee-track { animation: marquee 26s linear infinite; }
+  .marquee-track-slow { animation: marquee 38s linear infinite; }
+  .marquee-track-slow:hover { animation-play-state: paused; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+    .marquee-track-slow { animation: none; }
+    .fade-up { transition: none; opacity: 1; transform: none; }
+  }
+  .btn-pop { transition: transform .15s ease, background-color .15s ease, box-shadow .15s ease; }
+  .btn-pop:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -8px rgba(47,190,92,0.45); }
+  .tick::before { content:''; }
+  ::selection { background: #2FBE5C; color: #fff; }
+  .num-badge { font-variant-numeric: tabular-nums; }
+  #site-footer { padding-bottom: 76px; }
+  @media (min-width: 640px) { #site-footer { padding-bottom: 84px; } }
+  @media (min-width: 1024px) { #site-footer { padding-bottom: 88px; } }
+
+  /* ---- Adaptive fixed bottom bar (light/dark aware, transparent) ---- */
+  #fixed-bottom-bar {
+    --bar-bg: rgba(255,255,255,0.14);
+    --bar-border: rgba(255,255,255,0.18);
+    --bar-text: #ffffff;
+    --bar-text-muted: rgba(255,255,255,0.70);
+    --bar-text-muted2: rgba(255,255,255,0.65);
+    --bar-shadow: 0 -8px 30px -6px rgba(0,0,0,0.45);
+    background-color: var(--bar-bg);
+    border-top-color: var(--bar-border);
+    box-shadow: var(--bar-shadow);
+    transition: background-color .8s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color .8s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow .8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #fixed-bottom-bar.theme-light {
+    --bar-bg: rgba(17,17,17,0.12);
+    --bar-border: rgba(17,17,17,0.14);
+    --bar-text: #111111;
+    --bar-text-muted: rgba(17,17,17,0.68);
+    --bar-text-muted2: rgba(17,17,17,0.60);
+    --bar-shadow: 0 -8px 30px -6px rgba(0,0,0,0.10);
+  }
+  .bar-text { color: var(--bar-text); transition: color .8s cubic-bezier(0.4, 0, 0.2, 1); }
+  .bar-text-muted { color: var(--bar-text-muted); transition: color .8s cubic-bezier(0.4, 0, 0.2, 1); }
+  .bar-text-muted2 { color: var(--bar-text-muted2); transition: color .8s cubic-bezier(0.4, 0, 0.2, 1); }
+  .bar-border-l { border-left-color: var(--bar-border); transition: border-color .8s cubic-bezier(0.4, 0, 0.2, 1); }
+  .pulse-ring { position: relative; }
+  .pulse-ring::after {
+    content: '';
+    position: absolute; inset: -3px;
+    border-radius: inherit;
+    border: 2px solid #2FBE5C;
+    opacity: 0;
+    animation: pulseRing 2.2s ease-out infinite;
+  }
+  @keyframes pulseRing {
+    0% { opacity: .55; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.12); }
+  }
+  .hero-img { animation: heroZoom 18s ease-in-out infinite alternate; }
+  @keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+  .fw-img { transition: transform .5s ease; }
+  .fw-card:hover .fw-img { transform: scale(1.08); }
+  @media (prefers-reduced-motion: reduce) {
+    .pulse-ring::after { animation: none; }
+    .hero-img { animation: none; }
+  }
+</style>
+</head>
+<body class="text-ink antialiased">
+
+<!-- ============ HERO ============ -->
+<section class="relative bg-ink text-white overflow-hidden">
+  <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?fm=jpg&q=60&w=2000&auto=format&fit=crop" alt="" class="hero-img absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none">
+  <div class="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink to-ink pointer-events-none"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8 pt-14 pb-12 md:pt-20 md:pb-16">
+    <div class="grid lg:grid-cols-[1.5fr,1fr] gap-10 lg:gap-8 items-start">
+      <div>
+        <h1 id="hero-heading" style="opacity:0" class="font-sans font-extrabold text-[2.5rem] leading-[1.05] sm:text-6xl md:text-[3.85rem] md:leading-[1.03] tracking-tight">
+          The Way Your Business Is<br>
+          Built Around You Is.
+        </h1>
+        <p id="hero-p1" style="visibility:hidden" class="mt-6 max-w-xl text-white/70 text-[1.05rem] leading-relaxed">
+          Every important decision awaits you. Every system breaks the moment you step away.
+          That's not commitment; that's a structural problem.
+        </p>
+        <p id="hero-p2" style="visibility:hidden" class="mt-4 max-w-xl text-white/70 text-[1.05rem] leading-relaxed">
+          In 4 hours, you'll see exactly where it is and what to change.
+        </p>
+
+        <div id="hero-checklist" class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/55 font-medium">
+          <span style="opacity:0" class="flex items-center gap-2"><svg class="text-green shrink-0" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> No inspiration.</span>
+          <span style="opacity:0" class="flex items-center gap-2"><svg class="text-green shrink-0" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> No motivation.</span>
+          <span style="opacity:0" class="flex items-center gap-2"><svg class="text-green shrink-0" width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Just the clearest 4 hours your business has ever had.</span>
+        </div>
+      </div>
+
+      <!-- Event card -->
+      <div class="bg-ink2 border border-white/10 rounded-xl p-6 lg:mt-1">
+        <div class="flex items-center justify-between mb-6">
+          <div class="font-sans font-extrabold text-lg leading-none">Business<br>Success<span class="text-green">.</span></div>
+          <span class="text-[10px] uppercase tracking-widest text-white/45 border border-white/15 rounded-full px-2.5 py-1">Workshop</span>
+        </div>
+        <dl class="space-y-4 text-sm">
+          <div class="flex justify-between border-b border-white/10 pb-3">
+            <dt class="text-white/45 text-xs pt-0.5">Date</dt>
+            <dd class="text-white font-semibold">2nd July, 2026</dd>
+          </div>
+          <div class="flex justify-between border-b border-white/10 pb-3">
+            <dt class="text-white/45 text-xs pt-0.5">Format</dt>
+            <dd class="text-white font-semibold">Online Webinar</dd>
+          </div>
+          <div class="flex justify-between pb-1">
+            <dt class="text-white/45 text-xs pt-0.5">Time</dt>
+            <dd class="text-white font-semibold">9:00 AM – 1:00 PM IST</dd>
+          </div>
+        </dl>
+        <a href="#register" class="btn-pop mt-6 w-full inline-flex justify-center items-center gap-2 bg-green hover:bg-greendeep text-white font-semibold py-3.5 rounded-lg transition text-[0.95rem]">
+          Show me how to fix it – Register for ₹99/-
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div id="stats-row" class="mt-14 grid grid-cols-2 md:grid-cols-3 divide-x divide-white/10 border-t border-white/10 pt-8">
+      <div class="pr-4">
+        <div class="font-sans text-3xl md:text-4xl font-extrabold"><span class="stat-num" data-target="800000" data-suffix="+" data-format="lakh">0</span></div>
+        <div class="mt-1 text-xs uppercase tracking-wider text-white/45">Business Owners Trained</div>
+      </div>
+      <div class="pl-4 md:pl-8">
+        <div class="font-sans text-3xl md:text-4xl font-extrabold"><span class="stat-num" data-target="196" data-suffix="+">0</span></div>
+        <div class="mt-1 text-xs uppercase tracking-wider text-white/45">Industries Worked With</div>
+      </div>
+      <div class="col-span-2 md:col-span-1 pl-0 md:pl-8 pt-6 md:pt-0">
+        <div class="font-sans text-3xl md:text-4xl font-extrabold flex items-center gap-2"><span class="stat-num" data-target="4.96" data-decimal="2">0</span>
+          <span class="text-green text-base tracking-tighter">★★★★★</span>
+        </div>
+        <div class="mt-1 text-xs uppercase tracking-wider text-white/45">70,000+ Reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED IN MARQUEE ============ -->
+<section class="bg-paper border-b border-line py-8 overflow-hidden">
+  <p class="text-center text-[11px] uppercase tracking-[0.3em] text-muted mb-5 font-semibold">Featured In</p>
+  <div class="relative w-full overflow-hidden">
+    <div class="flex marquee-track w-max gap-16 items-center opacity-60 grayscale">
+      <span class="font-sans text-xl font-bold whitespace-nowrap">THE TIMES OF INDIA</span>
+      <span class="font-sans text-xl font-extrabold whitespace-nowrap">CNBC</span>
+      <span class="font-serif text-2xl italic font-semibold whitespace-nowrap">Forbes</span>
+      <span class="font-sans text-xl font-semibold whitespace-nowrap">The Economic Times</span>
+      <span class="font-sans text-xl font-bold whitespace-nowrap">YourStory</span>
+      <span class="font-sans text-xl font-bold whitespace-nowrap">THE TIMES OF INDIA</span>
+      <span class="font-sans text-xl font-extrabold whitespace-nowrap">CNBC</span>
+      <span class="font-serif text-2xl italic font-semibold whitespace-nowrap">Forbes</span>
+      <span class="font-sans text-xl font-semibold whitespace-nowrap">The Economic Times</span>
+      <span class="font-sans text-xl font-bold whitespace-nowrap">YourStory</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOBODY IS GOING TO TELL YOU ============ -->
+<section class="bg-paper py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-[0.85fr,1.15fr] gap-10 lg:gap-14 items-start">
+    <div class="fade-up">
+      <div class="aspect-[4/5] rounded-xl bg-ink2 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1758518727984-17b37f2f0562?fm=jpg&q=60&w=1200&auto=format&fit=crop" alt="Placeholder portrait — swap for Rajiv Talreja's photo" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6">
+          <p class="font-sans font-extrabold text-2xl leading-snug text-white">Nobody Is Going to Tell You This.<br>So I Will.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-up">
+      <div class="space-y-5">
+        <div class="flex gap-4 items-start">
+          <svg class="text-green shrink-0 mt-1" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p><span class="font-semibold text-ink">"Nobody can do this like me"</span><br>
+          <span class="text-muted">is not a strength. It's a control problem that will limit your business forever.</span></p>
+        </div>
+        <div class="flex gap-4 items-start">
+          <svg class="text-green shrink-0 mt-1" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p><span class="font-semibold text-ink">"My customers want only me"</span><br>
+          <span class="text-muted">That's not loyalty. That's a dependency you built.</span></p>
+        </div>
+        <div class="flex gap-4 items-start">
+          <svg class="text-green shrink-0 mt-1" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <p><span class="font-semibold text-ink">Working 16 hours a day is not a commitment</span><br>
+          <span class="text-muted">It's a sign that something structural is broken.</span></p>
+        </div>
+      </div>
+
+      <div class="mt-9 pt-8 border-t border-line">
+        <p class="font-sans text-2xl md:text-3xl font-extrabold leading-snug">
+          Business = Passion + Purpose + Profit.
+        </p>
+        <p class="mt-3 text-muted leading-relaxed max-w-xl">
+          In that order. Without the third, you don't have a business. You have an
+          expensive passion project with a payroll.
+        </p>
+        <p class="mt-3 text-muted leading-relaxed max-w-xl">
+          The good news: this is fixable. Every one of these is a <span class="font-semibold text-ink">STRUCTURE</span>
+          problem. And structure can be changed.
+        </p>
+      </div>
+
+      <div class="mt-8 flex items-center gap-4 bg-gradient-to-r from-indigo to-indigo2 text-white rounded-xl p-5">
+        <span class="font-sans font-extrabold text-sm leading-tight shrink-0">Business<br>Success<br>Workshop</span>
+        <p class="text-sm text-white/90 border-l border-white/25 pl-4">
+          The Business Success Workshop doesn't make you feel better about where you are.
+          It shows you clearly where you are, and exactly what to do about it.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how" class="bg-paper py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto fade-up">
+      <h2 class="font-sans text-3xl md:text-5xl font-extrabold">How It Works</h2>
+    </div>
+
+    <div class="mt-14 grid md:grid-cols-3 gap-6">
+      <div class="fade-up">
+        <p class="text-xs font-semibold uppercase tracking-wider text-muted mb-3">Step 1</p>
+        <span class="w-9 h-9 rounded-full bg-ink flex items-center justify-center mb-4">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#2FBE5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <p class="text-ink/80 leading-relaxed">Pay ₹99. Confirmation and 12 bonus modules in your inbox immediately.</p>
+      </div>
+      <div class="fade-up">
+        <p class="text-xs font-semibold uppercase tracking-wider text-muted mb-3">Step 2</p>
+        <span class="w-9 h-9 rounded-full bg-ink flex items-center justify-center mb-4">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#2FBE5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <p class="text-ink/80 leading-relaxed">Join live on Zoom. 4 hours of direct frameworks from 20 years and 39,000+ businesses. No pre-recorded content.</p>
+      </div>
+      <div class="fade-up">
+        <p class="text-xs font-semibold uppercase tracking-wider text-muted mb-3">Step 3</p>
+        <span class="w-9 h-9 rounded-full bg-ink flex items-center justify-center mb-4">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#2FBE5C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <p class="text-ink/80 leading-relaxed">You leave with your 2–3 priority gaps clear, and a ranked action plan. Not notes. Next steps.</p>
+      </div>
+    </div>
+
+    <div class="mt-12 fade-up flex flex-col sm:flex-row items-center justify-between gap-5 bg-paper2 border border-line rounded-xl p-6">
+      <p class="text-ink/70 text-sm text-center sm:text-left">Register, show up, and leave with a plan.<br class="hidden sm:block"> No pre-work. No complicated onboarding.</p>
+      <a href="#register" class="btn-pop shrink-0 inline-flex items-center gap-2 bg-ink hover:bg-ink2 text-white font-semibold px-6 py-3 rounded-lg transition text-sm">Register Now for ₹99/-</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 HOURS OF NO-BS CLARITY ============ -->
+<section class="bg-paper2 py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto fade-up">
+      <h2 class="font-sans text-3xl md:text-5xl font-extrabold leading-tight">4 Hours of No-BS Clarity on Your Business.</h2>
+      <p class="mt-4 text-muted">What's Wrong. What to Change. In What Order.</p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="fade-up bg-white border border-line rounded-xl p-6">
+        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-ink mb-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#2FBE5C"><path d="M13 2 3 14h7l-1 8 11-14h-8l1-6z"/></svg> Outcome 1
+        </span>
+        <p class="text-ink/80 leading-relaxed">Most owners run 2–3 businesses and wonder why the rest keeps breaking. You'll know which ones.</p>
+      </div>
+      <div class="fade-up bg-white border border-line rounded-xl p-6">
+        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-ink mb-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#2FBE5C"><path d="M13 2 3 14h7l-1 8 11-14h-8l1-6z"/></svg> Outcome 2
+        </span>
+        <p class="text-ink/80 leading-relaxed">Systems and SOPs aren't exciting, but they're what let a team run without you. You'll know what to build first.</p>
+      </div>
+      <div class="fade-up bg-white border border-line rounded-xl p-6">
+        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-ink mb-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#2FBE5C"><path d="M13 2 3 14h7l-1 8 11-14h-8l1-6z"/></svg> Outcome 3
+        </span>
+        <p class="text-ink/80 leading-relaxed">The 80/20 marketing vs. sales framework. Why your current approach isn't working, and what replaces it.</p>
+      </div>
+      <div class="fade-up bg-white border border-line rounded-xl p-6 sm:col-start-1 lg:col-start-1">
+        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-ink mb-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#2FBE5C"><path d="M13 2 3 14h7l-1 8 11-14h-8l1-6z"/></svg> Outcome 4
+        </span>
+        <p class="text-ink/80 leading-relaxed">ASK — Attitude, Skills, Knowledge. Built from 39,000+ engagements. Stops the 8-month hiring loop.</p>
+      </div>
+      <div class="fade-up bg-white border border-line rounded-xl p-6">
+        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-ink mb-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#2FBE5C"><path d="M13 2 3 14h7l-1 8 11-14h-8l1-6z"/></svg> Outcome 5
+        </span>
+        <p class="text-ink/80 leading-relaxed">By 1PM, top 3 gaps identified. A ranked 90-day action list. Not notes, next steps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12 FRAMEWORKS ============ -->
+<section id="frameworks" class="bg-paper py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto fade-up">
+      <h2 class="font-sans text-3xl md:text-5xl font-extrabold">Register and Avail 12 Practical Framework</h2>
+      <p class="mt-4 text-muted">Every workshop attendees receive all 12 modules immediately after the end of the workshop.</p>
+    </div>
+
+    <div id="framework-grid" class="mt-14 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
+
+    <div class="mt-10 fade-up flex flex-col sm:flex-row items-center justify-between gap-6 bg-paper2 border border-line rounded-xl p-6">
+      <div class="text-center sm:text-left">
+        <p class="font-semibold text-ink">12 Frameworks. 20 Years of Coaching Experience.<br class="hidden sm:block"> Yours Free With Registration.</p>
+        <p class="text-sm text-muted mt-2">Total Value: ₹14,900/- &nbsp;·&nbsp; Regular Price: ₹999/- &nbsp;·&nbsp; <span class="text-green font-bold">Today's Price: ₹99/-</span></p>
+      </div>
+      <a href="#register" class="btn-pop shrink-0 inline-flex items-center gap-2 bg-green hover:bg-greendeep text-white font-semibold px-6 py-3.5 rounded-lg transition text-sm">Register Now at ₹99/- Only</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="stories" class="bg-ink py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto fade-up">
+      <h2 class="font-sans text-3xl md:text-5xl font-extrabold text-white">What Business Owners Say<br>After Attending</h2>
+    </div>
+
+    <div class="mt-14 relative w-full overflow-hidden">
+      <div class="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-28 bg-gradient-to-r from-ink to-transparent z-10"></div>
+      <div class="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-28 bg-gradient-to-l from-ink to-transparent z-10"></div>
+      <div id="video-grid" class="flex marquee-track-slow w-max gap-4"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IS THIS FOR YOU ============ -->
+<section class="bg-ink text-white py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-5 md:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 fade-up">
+      <h2 class="font-sans text-3xl md:text-5xl font-extrabold max-w-xl">This Workshop<br>Is For You If…</h2>
+      <div class="w-16 h-16 rounded-full border-2 border-white/15 flex items-center justify-center shrink-0 order-first sm:order-last">
+        <span class="font-sans font-extrabold text-[10px] text-center leading-tight text-white/40">BUSINESS<br>SUCCESS</span>
+      </div>
+    </div>
+
+    <ul class="grid md:grid-cols-2 gap-x-10 gap-y-0">
+      <li class="fade-up flex gap-4 items-start border-b border-white/10 py-6">
+        <span class="text-green shrink-0 mt-0.5">→</span>
+        <span class="text-white/80 leading-relaxed">You've been in business for 2+ years, and growth has plateaued, and you don't know exactly why.</span>
+      </li>
+      <li class="fade-up flex gap-4 items-start border-b border-white/10 py-6">
+        <span class="text-green shrink-0 mt-0.5">→</span>
+        <span class="text-white/80 leading-relaxed">You have a team, but every important decision still waits for you.</span>
+      </li>
+      <li class="fade-up flex gap-4 items-start border-b border-white/10 py-6">
+        <span class="text-green shrink-0 mt-0.5">→</span>
+        <span class="text-white/80 leading-relaxed">Revenue is okay, but the business cannot scale the way it currently operates.</span>
+      </li>
+      <li class="fade-up flex gap-4 items-start border-b border-white/10 py-6">
+        <span class="text-green shrink-0 mt-0.5">→</span>
+        <span class="text-white/80 leading-relaxed">You're working harder than you ever did in a job, and the freedom you expected hasn't arrived.</span>
+      </li>
+      <li class="fade-up flex gap-4 items-start border-b border-white/10 py-6">
+        <span class="text-green shrink-0 mt-0.5">→</span>
+        <span class="text-white/80 leading-relaxed">You want to build systems, hire better, and generate leads consistently without more hustle.</span>
+      </li>
+      <li class="fade-up flex gap-4 items-start border-b border-white/10 py-6">
+        <span class="text-green shrink-0 mt-0.5">→</span>
+        <span class="text-white/80 leading-relaxed">You run any type of business: manufacturing, retail, services, F&amp;B, real estate, healthcare, consulting. The frameworks apply across 196+ industries.</span>
+      </li>
+    </ul>
+
+    <div class="mt-10 fade-up border border-amber/40 bg-amber/10 rounded-xl p-5 flex gap-3 items-start">
+      <span class="text-amber mt-0.5">⚠</span>
+      <p class="text-white/80 text-sm"><span class="font-semibold text-white">Not for you if:</span> you want motivation, shortcuts, or someone to tell you everything is fine. This is 4 hours of honest, structural work on your business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="bg-paper py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-[1.2fr,0.8fr] gap-10 lg:gap-14 items-center">
+    <div class="fade-up order-2 lg:order-1">
+      <p class="text-xs font-bold uppercase tracking-wider text-green mb-3">About Rajiv Talreja</p>
+      <h2 class="font-sans text-3xl md:text-4xl font-extrabold leading-tight max-w-xl">He's Not Here to Inspire You. He's Here Because Most Business Owners Deserve Better Than What They're Getting.</h2>
+
+      <div class="mt-8 space-y-4 text-muted leading-relaxed max-w-xl">
+        <p>Rajiv Talreja has been in business since 2006. He failed three times before building Quantum Leap, Asia's largest MSME coaching company. 39,000+ businesses coached. 8 lakh+ owners trained. 196+ industries. 4.96 stars from 70,000+ ratings.</p>
+        <p>He says other trainers won't say. He calls out excuses, with care, but without softening them. His workshops are not motivational sessions. They are honest, structured conversations about what it actually takes to build a business that grows.</p>
+        <p>You don't have to agree with everything he says. But you will leave with a clearer picture of your business than you arrived with.</p>
+      </div>
+    </div>
+
+    <div class="order-1 lg:order-2 fade-up">
+      <div class="aspect-[4/5] rounded-xl bg-ink2 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1758518729058-b158e71c5a9b?fm=jpg&q=60&w=1200&auto=format&fit=crop" alt="Placeholder portrait — swap for Rajiv Talreja's photo" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="bg-paper2 py-16 md:py-24">
+  <div class="max-w-3xl mx-auto px-5 md:px-8">
+    <div class="text-center fade-up">
+      <h2 class="font-sans text-3xl md:text-5xl font-extrabold">Honest Answers to Real Questions</h2>
+    </div>
+
+    <div id="faq-list" class="mt-12 space-y-3"></div>
+  </div>
+</section>
+
+<!-- ============ PERSONAL PROMISE ============ -->
+<section class="bg-ink text-white py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-5 md:px-8">
+    <div class="grid md:grid-cols-[0.75fr,1.25fr] gap-10 items-center fade-up">
+      <div class="aspect-[4/5] md:aspect-square rounded-xl bg-ink2 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1758518727984-17b37f2f0562?fm=jpg&q=60&w=1200&auto=format&fit=crop" alt="Personal message from Rajiv Talreja" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-ink/25"></div>
+        <button aria-label="Play message" class="absolute bottom-5 left-5 w-14 h-14 rounded-full bg-green/95 hover:bg-green flex items-center justify-center transition">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wider text-green mb-3">A Personal Promise</p>
+        <p class="text-white/80 leading-relaxed">Rajiv Talreja has been in business since 2006. He failed three times before building Quantum Leap, Asia's largest MSME coaching company. 39,000+ businesses coached, 8 lakh+ owners trained, 196+ industries, 4.96 stars from 70,000+ ratings.</p>
+        <p class="mt-4 text-white/80 leading-relaxed">He says other trainers won't say. He calls out excuses, with care, but without softening them. These workshops are not motivational sessions. They are honest, structured conversations about what it actually takes to build a business that grows.</p>
+        <p class="mt-4 text-white/80 leading-relaxed">You don't have to agree with everything he says. But you will leave with a clearer picture of your business than you arrived with.<br><span class="font-semibold text-white">You have nothing to lose.</span></p>
+        <p class="mt-6 font-semibold text-lg text-green">— Rajiv Talreja</p>
+      </div>
+    </div>
+    <p class="mt-12 fade-up flex gap-3 items-start text-white/35 text-xs max-w-4xl mx-auto leading-relaxed border-t border-white/10 pt-8">
+      <span class="shrink-0">⚠</span>
+      Important: The Business Success Workshop is an educational, learning and experiential framework meant, and strictly designed for business owners' teaching and understanding purposes. Individual results depend on your specific business practices, consistent effort, and implementation. Attendance does not guarantee any specific financial outcome. Testimonials of coaching clients are not a guarantee of future results.
+    </p>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section id="register" class="bg-ink text-white py-16 md:py-20 border-t border-white/10">
+  <div class="max-w-4xl mx-auto px-5 md:px-8 text-center">
+    <h2 class="font-sans text-2xl sm:text-4xl md:text-5xl font-extrabold leading-tight">You Can Keep Doing What You're Doing.<br>Or You Can Spend 4 Hours Finding Out Why It Isn't Working.</h2>
+    <p class="mt-5 text-white/60">No inspiration. No motivation that fades by Thursday. Just the clearest, most honest 4 hours your business has ever had.</p>
+
+    <a href="#" id="register-cta" class="btn-pop mt-9 inline-flex items-center gap-2 bg-green hover:bg-greendeep text-white font-semibold px-8 py-4 rounded-lg transition text-base">
+      Register Now for ₹99/-
+    </a>
+
+    <p class="mt-6 text-white/50 text-sm">₹99/- And a full refund if you aren't satisfied.</p>
+
+    <div class="mt-7 flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-white/55 font-medium">
+      <span>⏱ 9:00 AM – 1:00 PM IST</span>
+      <span>💻 Online Webinar</span>
+      <span>✅ 100% Money-Back Guarantee</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="site-footer" class="bg-ink text-white/50 py-8 border-t border-white/10">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-center sm:text-left">
+      <div class="flex gap-5">
+        <a href="#" class="hover:text-white transition">Terms and Conditions</a>
+        <a href="#" class="hover:text-white transition">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition">Refund Policy</a>
+      </div>
+      <p>© Copyright Quantum Leap Learning Solutions Pvt Ltd.</p>
+    </div>
+  </div>
+</footer>
+<br>
+<!-- ============ FIXED BOTTOM BAR (all devices, always visible like a sticky header) ============ -->
+<div id="fixed-bottom-bar" class="fixed bottom-0 inset-x-0 z-50 backdrop-blur border-t">
+  <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3.5 sm:py-4 flex items-center justify-between gap-4 sm:gap-6">
+    <div class="hidden sm:flex items-center gap-3 shrink-0">
+      <span class="font-sans font-extrabold text-base bar-text leading-none">Business<br>Success<span class="text-green">.</span></span>
+      <span class="hidden lg:flex items-center gap-1.5 bar-text-muted text-xs border-l bar-border-l pl-3 ml-1">
+        <span class="text-green">★★★★★</span> 4.96 · 70,000+ reviews
+      </span>
+    </div>
+    <p class="hidden md:block text-sm bar-text-muted2 flex-1 text-center">Register, show up, and leave with a plan. No pre-work. No complicated onboarding.</p>
+    <a href="#register" class="pulse-ring btn-pop w-full sm:w-auto shrink-0 inline-flex justify-center items-center gap-2 bg-green hover:bg-greendeep text-white font-bold px-7 py-3.5 rounded-lg transition text-sm sm:text-[15px]">
+      Register Now for ₹99/-
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="hidden sm:block"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+  // ---- Framework module data ----
+  const frameworkImages = [
+    'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600',
+    'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600',
+    'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600',
+    'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=600',
+    'https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=600',
+    'https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=600',
+  ];
+  const frameworks = [
+    { n: '01', title: '4 Tips to Build a High-Performance Team', d: 'Hire an attitude, not just a resume.' },
+    { n: '02', title: '5 Things to Get Right Before You Start Marketing', d: 'So your next campaign doesn\u2019t burn cash.' },
+    { n: '03', title: '7 Wrong Sales Mindsets Every Founder Reverses', d: 'The beliefs that replace them.' },
+    { n: '04', title: 'Ultimate 6 for Clearer Business Decision-Making', d: 'Cut noise, act faster, stay accountable.' },
+    { n: '05', title: '5 Ts for a Consistent Team Culture', d: 'Operating disciplines most owners skip.' },
+    { n: '06', title: '4 Different Ways to Innovate Your Business Model', d: 'Without touching current revenue.' },
+    { n: '07', title: '4 U\u2019s of Investing In Your Business', d: 'Cut cutting budgets that shrink growth.' },
+    { n: '08', title: '3 Strategies to Expand Your Business', d: 'Geography, verticals, or partnerships.' },
+    { n: '09', title: '8 C\u2019s to Build a Team from Scratch', d: 'Hire right, align early, scale smoothly.' },
+    { n: '10', title: 'How to Set the Right Vision', d: 'Stop discounting out of fear.' },
+    { n: '11', title: 'The B.E.S.T Method for Giving Feedback', d: 'Make feedback land, drive change.' },
+    { n: '12', title: 'How to Stay Motivated In Your Business', d: 'Avoid distractions, stay grounded.' },
+  ];
+  const grid = document.getElementById('framework-grid');
+  frameworks.forEach((f, i) => {
+    const el = document.createElement('div');
+    el.className = 'fw-card fade-up bg-white border border-line rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition duration-300';
+    el.innerHTML = `
+      <div class="aspect-[4/3] relative overflow-hidden">
+        <img src="${frameworkImages[i % frameworkImages.length]}" alt="" class="fw-img w-full h-full object-cover">
+        <div class="absolute inset-0 bg-ink/35"></div>
+        <span class="absolute top-2 left-2 text-[10px] font-bold text-white bg-ink/70 rounded px-1.5 py-0.5 num-badge">${f.n}</span>
+      </div>
+      <div class="p-3">
+        <p class="font-sans text-[13px] font-bold text-ink leading-snug">${f.title}</p>
+        <p class="mt-1.5 text-[11px] text-muted leading-snug">${f.d}</p>
+        <p class="mt-2 text-[10px] text-green font-semibold">Worth ₹499 per Module</p>
+      </div>
+    `;
+    grid.appendChild(el);
+  });
+
+  // ---- Video testimonial cards ----
+  const testimonials = [
+    { n: 'Manufacturing, 22 yrs', img: 'https://images.pexels.com/photos/5466238/pexels-photo-5466238.jpeg?auto=compress&cs=tinysrgb&w=600' },
+    { n: 'D2C Retail, 6 yrs', img: 'https://images.pexels.com/photos/7414106/pexels-photo-7414106.jpeg?auto=compress&cs=tinysrgb&w=600' },
+    { n: 'F&B Chain, 9 yrs', img: 'https://images.pexels.com/photos/9301291/pexels-photo-9301291.jpeg?auto=compress&cs=tinysrgb&w=600' },
+    { n: 'Healthcare, 14 yrs', img: 'https://images.pexels.com/photos/4342498/pexels-photo-4342498.jpeg?auto=compress&cs=tinysrgb&w=600' },
+    { n: 'Real Estate, 11 yrs', img: 'https://images.pexels.com/photos/7793699/pexels-photo-7793699.jpeg?auto=compress&cs=tinysrgb&w=600' },
+    { n: 'Services, 8 yrs', img: 'https://images.pexels.com/photos/8867244/pexels-photo-8867244.jpeg?auto=compress&cs=tinysrgb&w=600' },
+  ];
+  const vgrid = document.getElementById('video-grid');
+  [...testimonials, ...testimonials].forEach(t => {
+    const el = document.createElement('div');
+    el.className = 'shrink-0 w-48';
+    el.innerHTML = `
+      <div class="aspect-[9/16] rounded-xl bg-ink2 relative flex items-center justify-center overflow-hidden border border-white/10">
+        <img src="${t.img}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-55">
+        <div class="absolute inset-0 bg-ink/35"></div>
+        <span class="absolute top-2 left-2 flex items-center gap-1 bg-ink/70 text-[9px] font-semibold text-green px-1.5 py-0.5 rounded">
+          <svg width="9" height="9" viewBox="0 0 24 24" fill="#2FBE5C"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> Verified
+        </span>
+        <button aria-label="Play testimonial" class="relative z-10 w-13 h-13 rounded-full bg-white/95 hover:bg-white flex items-center justify-center transition" style="width:52px;height:52px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#E01818"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="absolute bottom-2 left-2 right-2 flex items-center gap-2 text-white/70 text-[10px]">
+          <span>0:00</span>
+          <span class="flex-1 h-0.5 bg-white/20 rounded"></span>
+        </div>
+      </div>
+      <p class="mt-2 text-[11px] uppercase tracking-wide text-muted font-semibold">${t.n}</p>
+    `;
+    vgrid.appendChild(el);
+  });
+
+  // ---- FAQ accordion ----
+  const faqs = [
+    { q: 'Is this relevant to my specific industry?', a: 'The frameworks are structural, not industry-specific. They\u2019ve been applied across 196+ industries \u2014 manufacturing, retail, services, F&B, real estate, healthcare, consulting, and more. The examples change; the underlying problems don\u2019t.' },
+    { q: 'Why does this cost only \u20b999?', a: 'The workshop\u2019s real value comes from the 39,000+ businesses this is built on. The low price removes the excuse to skip it \u2014 it exists to filter for people who\u2019ll actually show up and do the work.' },
+    { q: 'What if I don\u2019t find it useful?', a: 'It\u2019s backed by a 100% money-back guarantee. If you attend the full session and don\u2019t find it valuable, you get a refund \u2014 no argument.' },
+    { q: 'Will I get a recording?', a: 'No. This is a live, no-pre-recorded-content session by design \u2014 it keeps the room honest and the questions real. Show up live.' },
+    { q: 'Can I attend with my business partner?', a: 'Yes \u2014 in fact it\u2019s encouraged. Structural decisions land better when the people who make them are in the room together.' },
+  ];
+  const faqList = document.getElementById('faq-list');
+  faqs.forEach((f) => {
+    const item = document.createElement('div');
+    item.className = 'fade-up bg-white border border-line rounded-xl overflow-hidden';
+    item.innerHTML = `
+      <button class="faq-btn w-full flex items-center justify-between gap-4 text-left px-6 py-5">
+        <span class="font-semibold text-ink">${f.q}</span>
+        <span class="faq-icon shrink-0 w-7 h-7 rounded-full bg-paper2 flex items-center justify-center text-ink transition-transform duration-300">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+      <div class="faq-panel grid grid-rows-[0fr] transition-all duration-300">
+        <div class="overflow-hidden">
+          <p class="px-6 pb-5 text-muted leading-relaxed text-sm">${f.a}</p>
+        </div>
+      </div>
+    `;
+    faqList.appendChild(item);
+    const btn = item.querySelector('.faq-btn');
+    const panel = item.querySelector('.faq-panel');
+    const icon = item.querySelector('.faq-icon');
+    btn.addEventListener('click', () => {
+      const open = panel.classList.contains('grid-rows-[1fr]');
+      document.querySelectorAll('.faq-panel').forEach(p => p.classList.remove('grid-rows-[1fr]'));
+      document.querySelectorAll('.faq-icon').forEach(ic => ic.style.transform = 'rotate(0deg)');
+      if (!open) {
+        panel.classList.add('grid-rows-[1fr]');
+        icon.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+
+  // ---- Scroll reveal ----
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  // ---- Animated stat counters (run once, when hero stats scroll into view) ----
+  function formatLakh(n) {
+    // Indian numbering: 8,00,000
+    const s = Math.round(n).toString();
+    if (s.length <= 3) return s;
+    let last3 = s.slice(-3);
+    let rest = s.slice(0, -3);
+    rest = rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',');
+    return rest + ',' + last3;
+  }
+  function animateStat(el) {
+    const target = parseFloat(el.dataset.target);
+    const decimals = parseInt(el.dataset.decimal || '0', 10);
+    const suffix = el.dataset.suffix || '';
+    const isLakh = el.dataset.format === 'lakh';
+    const duration = 2600;
+    const start = performance.now();
+    function tick(now) {
+      const p = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - p, 2.2);
+      const val = target * eased;
+      el.textContent = (isLakh ? formatLakh(val) : val.toFixed(decimals)) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const statsRow = document.getElementById('stats-row');
+  if (statsRow) {
+    const statIo = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          statsRow.querySelectorAll('.stat-num').forEach((el, i) => {
+            setTimeout(() => animateStat(el), 250 + i * 200);
+          });
+          statIo.unobserve(statsRow);
+        }
+      });
+    }, { threshold: 0.3 });
+    statIo.observe(statsRow);
+  }
+
+  // ---- Adaptive fixed bottom bar: light text on dark sections, dark text on light sections ----
+  (function () {
+    const bar = document.getElementById('fixed-bottom-bar');
+    if (!bar) return;
+
+    function getBgColor(el) {
+      while (el && el !== document.documentElement) {
+        const bg = getComputedStyle(el).backgroundColor;
+        if (bg && bg !== 'transparent' && !/rgba?\(0,\s*0,\s*0,\s*0\)/.test(bg)) return bg;
+        el = el.parentElement;
+      }
+      return getComputedStyle(document.body).backgroundColor;
+    }
+
+    function luminance(rgbStr) {
+      const nums = rgbStr.match(/[\d.]+/g);
+      if (!nums) return 255;
+      const [r, g, b] = nums.map(Number);
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    }
+
+    let ticking = false;
+    function updateBarTheme() {
+      const rect = bar.getBoundingClientRect();
+      const sampleY = Math.max(rect.top - 4, 1);
+      const el = document.elementFromPoint(window.innerWidth / 2, sampleY);
+      if (el) {
+        const isLight = luminance(getBgColor(el)) > 150;
+        bar.classList.toggle('theme-light', isLight);
+      }
+      ticking = false;
+    }
+    function onScrollOrResize() {
+      if (!ticking) {
+        requestAnimationFrame(updateBarTheme);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize);
+    document.addEventListener('DOMContentLoaded', updateBarTheme);
+    updateBarTheme();
+  })();
+
+  // ---- Hero entrance animation: heading drops in, paragraphs type out, checklist fades up ----
+  (function () {
+    const heading = document.getElementById('hero-heading');
+    const p1 = document.getElementById('hero-p1');
+    const p2 = document.getElementById('hero-p2');
+    const checklistItems = document.querySelectorAll('#hero-checklist > span');
+    if (!heading || !p1 || !p2) return;
+
+    // Fallback: if GSAP fails to load, just reveal everything instantly.
+    function revealInstantly() {
+      heading.style.opacity = '1';
+      [p1, p2].forEach(p => { p.style.visibility = 'visible'; });
+      checklistItems.forEach(s => { s.style.opacity = '1'; });
+    }
+    if (typeof gsap === 'undefined') { revealInstantly(); return; }
+
+    // Typewriter: reveals text one character at a time, wrapped as a GSAP tween
+    // so it can be sequenced inside a timeline like any other animation.
+    function typewriterTween(el, duration) {
+      const fullText = el.textContent.trim();
+      el.textContent = '';
+      el.style.visibility = 'visible';
+      const proxy = { chars: 0 };
+      return gsap.to(proxy, {
+        chars: fullText.length,
+        duration: duration,
+        ease: 'none',
+        onUpdate: function () {
+          el.textContent = fullText.slice(0, Math.round(proxy.chars));
+        }
+      });
+    }
+
+    const p1Duration = Math.max(1.1, p1.textContent.trim().length * 0.018);
+    const p2Duration = Math.max(0.8, p2.textContent.trim().length * 0.018);
+
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    tl.fromTo(heading, { opacity: 0, y: -45 }, { opacity: 1, y: 0, duration: 0.95 })
+      .add(typewriterTween(p1, p1Duration), '+=0.15')
+      .add(typewriterTween(p2, p2Duration), '+=0.1');
+
+    if (checklistItems.length) {
+      tl.fromTo(checklistItems, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.15 }, '+=0.1');
+    }
+  })();
+</script>
+</body>
+</html>
